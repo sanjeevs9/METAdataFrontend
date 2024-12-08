@@ -6,7 +6,7 @@ A Next.js application that allows users to view detailed Facebook page profiles 
 
 [graphql](https://my-app.sanjeev-19kr.workers.dev/graphql)
 
-[frontend](https://met-adata-frontend.vercel.app)
+[frontend](https://met-adata-frontend-git-main-sanjeevs9s-projects.vercel.app/)
 
 ### Getting Started
 
