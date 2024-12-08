@@ -4,12 +4,8 @@ import { useSession } from "next-auth/react";
 import FacebookPageCard from "../../components/FacebookPageCard";
 import { useEffect, useState } from "react";
 import { fetchPages } from "@/lib/functions";
-// Types
-type FacebookPage = {
-  category: string;
-  id: string;
-  name: string;
-};
+import type { FacebookPage } from "@/lib/types";
+
 
 
 export default function FacebookPage() {

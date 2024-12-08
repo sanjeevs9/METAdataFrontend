@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/config";
+import Link from "next/link";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -41,12 +41,12 @@ export default async function Home() {
           <p className="text-gray-600 text-center mb-8">
             Connect your account with Facebook to continue
           </p>
-          <a
+          <Link 
             href="/facebook"
             className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition duration-300 hover:scale-105 hover:shadow-md"
           >
             Continue with Facebook
-          </a>
+          </Link>
         </div>
       </div>
     </div>

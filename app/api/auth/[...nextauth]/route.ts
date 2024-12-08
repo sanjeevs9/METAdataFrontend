@@ -1,20 +1,6 @@
-import NextAuth, { AuthOptions } from 'next-auth';
-import FacebookProvider from 'next-auth/providers/facebook';
 
-export const authOptions:AuthOptions = {
-  providers: [
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID || "",
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET || "",
-    }),
-  ],
-  callbacks: {
-    async signIn({ user, account, profile }) {
-      console.log({ user, account, profile });
-      return true; 
-    },
-  },
-};
+import NextAuth from 'next-auth';
+import { authOptions } from '../config';
 
 const handler = NextAuth(authOptions);
 

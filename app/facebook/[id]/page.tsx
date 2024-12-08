@@ -1,18 +1,18 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+
 import { getServerSession } from 'next-auth';
-import Image from 'next/image';
 import type { PageDetail } from '@/lib/types';
 import { getPageDetail } from '@/lib/functions';
+import { authOptions } from '@/app/api/auth/config';
 
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
 
-
-export default async function PageDetail({ params }: { params: { id: string } }) {
+export default async function PageDetail({ params }: PageProps) {
   const session=getServerSession(authOptions);
  
   const {id}  = await params;
-  console.log(id);
   const pageDetail = await getPageDetail(id);
-  console.log(pageDetail);
   
   if (!session) {
     return <></>;
@@ -24,7 +24,7 @@ export default async function PageDetail({ params }: { params: { id: string } })
         <div className="bg-white shadow rounded-lg mb-6">
           <div className="px-4 py-5 sm:px-6">
             <div className="flex items-center">
-              <Image
+              <img
                 src={pageDetail.profile_picture_url}
                 alt={pageDetail.name}
                 width={80}
@@ -62,11 +62,9 @@ export default async function PageDetail({ params }: { params: { id: string } })
               {pageDetail.stories.map((story) => (
                 <div key={story.id} className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
                   <div className="relative aspect-square">
-                    <Image
+                    <img
                       src={story.media_url}
                       alt=""
-                      layout="fill"
-                      objectFit="cover"
                     />
                   </div>
                   <div className="p-2 flex justify-between text-xs">
@@ -112,11 +110,9 @@ export default async function PageDetail({ params }: { params: { id: string } })
                     </video>
                   </div>
                   ) : (
-                    <Image
+                    <img
                       src={item.media_url}
                       alt={item.caption || ''}
-                      layout="fill"
-                      objectFit="cover"
                     />
                   )}
                 </div>

@@ -32,3 +32,9 @@ export type Story = {
     stories: Story[];
     media: Media[];
   };
+
+  export type FacebookPage = {
+    category: string;
+    id: string;
+    name: string;
+  };

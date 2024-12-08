@@ -1,9 +1,10 @@
 import { FETCH_PAGES_QUERY } from "./query";
 import type { PageDetail } from "./types";
 import {PAGE_QUERY} from "./query";
+import type { FacebookPage } from "./types";
 
-// fetchPages.ts
-export const fetchPages = async (setPages: Function, setError: Function, setLoading: Function) => {
+// fetchPages.ts 
+export async function fetchPages(setPages: (pages: FacebookPage[]) => void, setError: (error: string) => void, setLoading: (loading: boolean) => void): Promise<void> {
     try {
         
       const response = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_API_URL}`, {
